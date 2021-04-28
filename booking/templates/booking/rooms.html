@@ -1,0 +1,51 @@
+{% extends "booking/base.html" %}
+{% load static %}
+{% block page_content %}
+<!-- rooms section start -->
+    <!-- Sub banner start -->
+    <div class="sub-banner overview-bgi">
+        <div class="container">
+            <div class="breadcrumb-area">
+                <h1>Rooms 3 Column</h1>
+                <ul class="breadcrumbs">
+                    <li><a href="index-2.html">Home</a></li>
+                    <li class="active">Rooms 3 Column</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Sub Banner end -->
+
+    <div class="content-area rooms-section">
+        <div class="container">
+            <!-- Main title -->
+            <div class="main-title">
+                <h1>Our Best Rooms</h1>
+            </div>
+            <div class="row">
+                {% for room in all_rooms %}
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="hotel-box">
+                            <!--header -->
+                            <div class="header clearfix">
+                                <img src="{{room.room_image.url}}" alt="room-col-4" class="img-responsive">
+                            </div>
+                            <!-- Detail -->
+                            <div class="detail clearfix">
+                                <h3>
+                                    <a href="rooms-details.html">{{ room.room_type.type }}</a>
+                                </h3>
+                                <h3>N {{room.room_type.price}}.<sup>00</sup> per Night</h3>
+                                <p>{{room.description}}</p>
+                                <hr>
+                                <a href="{% url 'room_detail' room.pk%}" class="btn btn-outline2 btn-sm">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}    
+            </div>
+        </div>
+    </div>
+    <!-- rooms section end -->
+
+{% endblock %}

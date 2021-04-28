@@ -1,0 +1,40 @@
+{% extends "booking_payment/base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% block page_content %}
+<div class="sub-banner overview-bgi">
+    <div class="container">
+        <div class="breadcrumb-area">
+            <h1>Booking System</h1>
+            <ul class="breadcrumbs">
+                <li><a href="index-2.html">Home</a></li>
+                <li class="active">Confirm Booking</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="card text-center">
+        <div class="card-header">
+          Booking 
+        </div>
+        <div class="card-body">
+            <h3 class="card-title">Booking Details</h3>
+            <p class="card-text">Below are the deatils for your booking</p>
+            <div class="header clearfix">
+                <img src="{{room.room_image.url}}" alt="room-col-4" class="img-thumbnail img-responsive">
+            </div>  
+            <h5 class="card-title">Name: {{customer.username}}</h5>
+            <h5 class="card-title">Room: {{room.room_number}}</h5>
+            <h5 class="card-title">Check In {{checkin_date}}</h5>
+            <h5 class="card-title">Check Out {{checkout_date}}</h5>
+          <a href="#" class="btn search-button btn-theme next-step">Make Payment</a>
+        </div>
+        <div class="card-footer text-muted">
+          2 days ago
+        </div>
+      </div>
+</div>
+
+
+{% endblock %}

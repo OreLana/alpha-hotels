@@ -1,0 +1,170 @@
+{% extends "booking/base.html" %}
+{% load static %}
+{% block page_content %}
+<!-- Sub banner start -->
+    <div class="sub-banner overview-bgi">
+        <div class="container">
+            <div class="breadcrumb-area">
+                <h1>Room Detail</h1>
+                <ul class="breadcrumbs">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li class="active">Room Detail</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Sub Banner end -->
+    <div class="content-area rooms-detail-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-xs-12">
+                    <!-- Heading courses start -->
+                    <div class="heading-rooms  clearfix sidebar-widget">
+                        <div class="pull-left">
+                            <h3>{{ room.room_type.type}}</h3>
+                            <p>
+                                <i class="fa fa-map-marker"></i>123 Kathal St. Tampa City,
+                            </p>
+                        </div>
+                        <div class="pull-right">
+                            <h3><span>N{{room.room_type.price}}</span></h3>
+                            <h5>Per Manth</h5>
+                        </div>
+                    </div>
+                    <!-- Heading courses end -->
+                    <div class="rooms-detail-slider sidebar-widget">
+                        <!--  Rooms detail slider start -->
+                        <div class="rooms-detail-slider simple-slider mb-40 ">
+                            <div class="blog-1 mb-50">
+                                <div class="blog-photo">
+                                    <img src="{{room.room_image.url}}" alt="blog-big" class="img-responsive">
+                                </div> 
+                            </div> 
+                        </div>
+                        <!--  Rooms detail slider end --> 
+                    </div> 
+                </div>
+                <!-- Search area box 2 start -->
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="sidebar-widget search-area-box-2 hidden-sm hidden-xs clearfix bg-grey">
+                        <div class="text-center">
+                            <h3>Book Your Room</h3>
+                            <h1>N{{room.room_type.price}}/Night</h1>
+                        </div>  
+                    </div>                              
+                    <div class="search-contents">
+                            {% if user.is_authenticated %}
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <div class="form-group">
+                                                    <a href="{% url 'book_room' room.pk %}"><button class="search-button btn-theme">Book Now</button></a>
+                                                </div>
+                                            </div>
+                                        {% else %}
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <div class="form-group">
+                                                    <a href="{% url 'login' %}"><button class="search-button btn-theme">Register/Sign Up to Book</button></a>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                        </div>
+                    </div>
+                </div>    
+                <!-- Search area box 2 end -->
+                <!-- Rooms description start -->
+                <div class="panel-box course-panel-box course-description">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab1default" data-toggle="tab" aria-expanded="true">Description</a></li>
+                        <li class=""><a href="#tab2default" data-toggle="tab" aria-expanded="false">Features</a></li>
+                        <li class=""><a href="#tab3default" data-toggle="tab" aria-expanded="false">Advantages</a></li>
+                        <li class=""><a href="#tab4default" data-toggle="tab" aria-expanded="false">Our Staff</a></li>
+                        <li class=""><a href="#tab5default" data-toggle="tab" aria-expanded="false">Video</a></li>
+                    </ul>
+                    <div class="panel with-nav-tabs panel-default">
+                        <div class="panel-body">
+                            <div class="tab-content">
+                                <div class="tab-pane fade active in" id="tab1default">
+                                    <div class="divv">
+                                        <!-- Title -->
+                                        <h3>Room Description</h3>
+                                        <!-- paragraph -->
+                                        <p>{{ room.description }}</p>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade features" id="tab2default">
+                                    <!-- Rooms features start -->
+                                    <div class="rooms-features">
+                                        <h3>Rooms Features</h3>
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                                <ul class="condition">
+                                                    <li>
+                                                        <i class="flaticon-air-conditioning"></i>Air conditioning
+                                                    </li>
+                                                    <li>
+                                                        <i class="flaticon-balcony-and-door"></i>Balcony
+                                                    </li>
+                                                    <li>
+                                                        <i class="flaticon-weightlifting"></i>Gym
+                                                    </li>
+                                                    <li>
+                                                        <i class="flaticon-parking"></i>Parking
+                                                    </li>
+                                                    <li>
+                                                        <i class="flaticon-sunbed"></i>Beach View
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                                <ul class="condition">
+                                                    <li>
+                                                        <i class="flaticon-bed"></i>2 Bedroom
+                                                    </li>
+                                                    <li>
+                                                        <i class="flaticon-person-learning-by-reading"></i>Free Newspaper
+                                                    </li>
+                                                    <li>
+                                                        <i class="flaticon-swimming-silhouette"></i>Use of pool
+                                                    </li>
+                                                    <li>
+                                                        <i class="flaticon-graph-line-screen"></i>TV
+                                                    </li>
+                                                    <li>
+                                                        <i class="flaticon-no-smoking-sign"></i>No Smoking
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                                <ul class="condition">
+                                                    <li>
+                                                        <i class="flaticon-room-service"></i>Room Service
+                                                    </li>
+                                                    <li>
+                                                        <i class="flaticon-breakfast"></i>Breakfast
+                                                    </li>
+                                                    <li>
+                                                        <i class="flaticon-phone-receiver"></i>Telephone
+                                                    </li>
+                                                    <li>
+                                                        <i class="flaticon-bed"></i>2 Bedroom
+                                                    </li>
+                                                    <li>
+                                                        <i class="flaticon-wifi-connection-signal-symbol"></i>Free Wi-Fi
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Rooms features end -->
+                                    </div>
+
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                
+
+    {% endblock %}

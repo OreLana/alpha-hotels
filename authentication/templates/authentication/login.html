@@ -1,0 +1,70 @@
+{% extends "authentication/base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% block page_content %}
+
+<div class="contact-bg overview-bgi">   
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Form content box start -->
+                <div class="form-content-box">
+                    <!-- logo -->
+                    <a href="{% url 'index' %}" class="clearfix alpha-logo">
+                        <img src="{% static 'authentication/img/logos/white-logo.png' %}" alt="white-logo">
+                    </a>
+                    <!-- details -->
+                    <div class="details">
+                        <h3>Sign into your account</h3>
+                        <!-- Form start -->
+                        <form method="POST" action="{% url 'login_auth' %}">
+                            {% csrf_token %}
+                            {% for field in form.visible_fields %}
+                                <div class="form-group">
+                                    {{ field.label_tag }}
+                                    {% if field.errors %}
+                                        <div class="alert alert-danger">
+                                            <strong>{{ field.errors }}</strong>
+                                        </div>
+                                    {% endif %}
+                                    {% render_field field class="input-text" placeholder=field.label %}
+                                    {% if field.help_text %}
+                                        <small class="form-text text-muted">{{ field.help_text }}</small>
+                                    {% endif %}                                    
+                                </div>
+                            {% endfor %}
+                            {% for message in messages %}
+                                <p id="messages" class="alert alert-danger">{{message}}</p>
+                            {% endfor %}			
+                
+                            <div class="checkbox">
+                                <div class="ez-checkbox pull-left">
+                                    <label>
+                                        <input type="checkbox" class="ez-hide">
+                                        Remember me
+                                    </label>
+                                </div>
+                                <a href="{% url 'password_reset' %}" class="link-not-important pull-right">Forgot Password</a>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="mb-0">
+                                <button type="submit" class="btn-md btn-theme btn-block">login</button>
+                            </div>
+                        </form>
+                        <!-- Form end -->
+                    </div>
+                    <!-- Footer -->
+                    <div class="footer">
+                        <span>
+                            Don't have an account? <a href="{% url 'register' %}">Register here</a>
+                        </span>
+                    </div>
+                </div>
+                <!-- Form content box end -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Content area end -->
+
+{% endblock %}

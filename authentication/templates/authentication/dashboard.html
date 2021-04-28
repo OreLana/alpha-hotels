@@ -1,0 +1,47 @@
+{% extends "authentication/base2.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% block page_content %}
+
+
+<!-- Sub banner start -->
+<div class="sub-banner overview-bgi">
+    <div class="container">
+        <div class="breadcrumb-area">
+            <h1>Dashboard</h1>
+            <ul class="breadcrumbs">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li class="active">Hi! {{user.username|capfirst}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Sub Banner end -->
+<div class="container">
+    <a href="{% url 'logout' %}">logout</a>
+</div>
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+            {% for booking in bookings %}
+                <th>{{ booking }}</th>
+            {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+                <tr>
+
+
+ 
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+
+{% endblock %}
